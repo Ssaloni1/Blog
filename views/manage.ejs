@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+
+<div class="manage-container">
+  <h1 class="manage-heading">Manage Blog Posts</h1>
+
+  <table class="manage-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Snippet</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% allPosts.forEach(function(post) { %>
+        <tr>
+          <td>
+            <% if (post.imagePath) { %>
+              <img src="<%= post.imagePath %>" alt="Post Image" class="manage-img">
+            <% } else { %>
+              <span>No image</span>
+            <% } %>
+          </td>
+          <td><%= post.title %></td>
+          <td><%= post.author %></td>
+          <td><%= post.blogContent.substring(0, 100) %>...</td>
+          <td><%= post.date %></td>
+          <td>
+            <a href="/edit/<%= post.id %>">
+              <button class="edit-btn">Edit</button>
+            </a>
+            
+            <form action="/delete/<%= post.id %>" method="POST" style="display:inline;">
+              <button class="delete-btn">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+<div class="edit-page-bg">
+  <div class="edit-container">
+    <h1 class="edit-heading">Edit Post</h1>
+
+    <form action="/edit/<%= post.id %>" method="POST" enctype="multipart/form-data" class="edit-form">
+
+      <label for="title">Title</label>
+      <input 
+        type="text" 
+        name="title" 
+        id="title"
+        value="<%= post.title %>" 
+        placeholder="Title" 
+        required
+      >
+
+      <label for="author">Author</label>
+      <input 
+        type="text" 
+        name="author" 
+        id="author"
+        value="<%= post.author %>" 
+        placeholder="Author" 
+        required
+      >
+
+      <label for="content">Content</label>
+      <textarea 
+        name="content" 
+        id="content"
+        placeholder="Enter text" 
+        required
+      ><%= post.blogContent %></textarea>
+
+      <% if (post.imagePath) { %>
+        <p class="current-image-label">Current Image:</p>
+        <img src="<%= post.imagePath %>" alt="Current image" class="edit-current-img">
+      <% } %>
+
+      <label for="image">Replace Image (optional):</label>
+      <input type="file" name="image" id="image" accept="image/*">
+
+      <button type="submit" class="edit-submit-btn">Update</button>
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

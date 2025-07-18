@@ -1,0 +1,23 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Vintage-themed blog with EJS and Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "multer": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=16.x"
+  }
+}
+

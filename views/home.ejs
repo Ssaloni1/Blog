@@ -1,0 +1,69 @@
+<%- include("partials/header.ejs") %>
+
+<!-- Hero Section -->
+<section class="hero-section text-center">
+  <div class="container">
+    <h1>Where Technology Meets Tradition</h1>
+    <p>Preserving the past. Creating the future.</p>
+    <p>A digital journal of stories, memories, and moments.</p>
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+      <a href="/compose" class="btn-vintage"> Write a Blog</a>
+      <a href="#posts" class="btn-vintage"> Read Blogs</a>
+    </div>
+  </div>
+</section>
+
+<!-- Posts Section -->
+<!-- Posts Section -->
+<section id="posts-wrapper" class="bg-vintage">
+  <div class="container py-5">
+    <div class="row">
+      <% allPosts.forEach(function(post, index) { %>
+        <!-- Each card -->
+        <div class="col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative card-vintage">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary-emphasis">
+                <!-- category later -->
+              </strong>
+              <h3 class="mb-0"><%= post.title %></h3>
+              <div class="mb-1 text-body-secondary"><%= post.author %> | <%= post.date %></div>
+              <p class="card-text mb-auto">
+                <%= post.blogContent.length > 100 ? post.blogContent.substring(0, 100) + "..." : post.blogContent %>
+              </p>
+              <a href="/post/<%= post.id %>" class="btn-readmore">Continue Reading →</a>
+
+            </div>
+            <% if (post.imagePath) { %>
+              <div class="col-auto d-none d-lg-block">
+                <img
+                  src="<%= post.imagePath %>"
+                  alt="Post thumbnail"
+                  height="250"
+                  width="200"
+                  style="object-fit: cover; border-left: 1px solid #ccc;"
+                />
+              </div>
+            <% } else { %>
+              <div class="col-auto d-none d-lg-block">
+                <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img" height="250" width="200" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c"></rect>
+                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                </svg>
+              </div>
+            <% } %>
+          </div>
+        </div>
+        <% if ((index + 1) % 2 === 0) { %>
+          </div><div class="row">
+        <% } %>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+
+
+<%- include("partials/footer.ejs") %>

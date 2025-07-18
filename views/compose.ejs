@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+
+<div class="vintage-compose-bg">
+  <div class="compose-form-box">
+    <h1 class="compose-heading">Create a New Post</h1>
+
+    <form action="/compose" method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Post Title" class="form-input" required>
+      <input type="text" name="author" placeholder="Author" class="form-input" required>
+      <textarea name="content" placeholder="Write your post content here..." rows="8" class="form-textarea" required></textarea>
+      
+      <label for="image" class="form-label">Upload an image:</label>
+      <input type="file" name="image" id="image" accept="image/*" class="form-file">
+
+      <input type="submit" value="Publish Post" class="submit-btn">
+    </form>
+    <br>
+    <a href="/" class="back-btn">← Back to Home</a>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
+
