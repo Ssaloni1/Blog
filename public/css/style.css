@@ -511,6 +511,8 @@ body {
 /* Heading */
 .edit-heading {
   font-size: 2.5rem;
+  font-family: "UnifrakturCook", cursive;
+  color: #4b3621;
   margin-bottom: 20px;
   text-align: center;
 }
